@@ -50,10 +50,16 @@ public class UserServlet extends HttpServlet {
 		if (action.contains("create")) {
 
 			User usr = UserUtil.extractUserFromRequest(request);
+			boolean allfieldsokay = UserUtil.checkAllFields(usr);
+			if(allfieldsokay)
+			{
 			boolean isAdded = dao.insertUser(usr);
 			if (isAdded) {
 				response.sendRedirect("createUser.jsp?status=success");
-			} else
+			}
+			else
+				response.sendRedirect("createUser.jsp?status=failed");
+			}else
 				response.sendRedirect("createUser.jsp?status=failed");
 
 		} else if (action.contains("edit")) {

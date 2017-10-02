@@ -67,4 +67,12 @@ public class UserUtil {
 	return isThere;
 		
 	}
+	
+	public static boolean checkAllFields(User user)
+	{
+		if(user.getFirstName() == "" || user.getLastName()=="" || user.getAge()== "" || user.getUserName()=="" || user.getPassword()=="")
+			return false;
+		else
+			return true;
+	}
 }

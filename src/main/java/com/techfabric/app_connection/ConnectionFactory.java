@@ -18,9 +18,10 @@ public class ConnectionFactory {
 		try {
 
 			Class.forName(ConnectionMetaData.DRIVER);
-			_connection = DriverManager.getConnection(ConnectionMetaData.HOST_URL, ConnectionMetaData.USER,
-					ConnectionMetaData.PASS);
-
+			
+			String DB_URL = System.getProperty("JDBC_CONNECTION_STRING");
+			_connection  = DriverManager.getConnection(DB_URL);
+			
 			if (_connection != null) {
 				System.out.println("Connection to Databae is successful");
 			} else {
